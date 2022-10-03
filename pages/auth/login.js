@@ -43,7 +43,8 @@ export default function Login() {
   }, [user]);
 
   return (
-    <div className="shadow-xl text-gray-800 rounded-lg mt-32 p-10">
+    <div className="flex justify-center flex-row align-middle items-center">
+    <div className="shadow-xl text-gray-800 rounded-lg mt-32 p-10 w-96 ">
       <h1 className="text-3xl font-medium">Join us today</h1>
       <div className="py-4">
         <h2 className="py-4">Sign in with one of the providers</h2>
@@ -61,6 +62,7 @@ export default function Login() {
           Sign in with Facebook
         </button>
       </div>
+    </div>
     </div>
   );
 }
