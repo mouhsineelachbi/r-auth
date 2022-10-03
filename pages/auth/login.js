@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -20,6 +20,18 @@ export default function Login() {
     } catch (error) {}
   };
 
+  // Sign in using facebook provider
+  const fbAuthProvider = new FacebookAuthProvider()
+  const loginFacebook = async () => {
+    try {
+      const result = await signInWithPopup(auth, fbAuthProvider)
+      console.log(result)
+      router.push('/dashoard')
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   useEffect(() => {
     if (user) {
       router.push("/dashboard");
@@ -40,7 +52,7 @@ export default function Login() {
           <FcGoogle className="text-2xl" />
           Sign in with Google
         </button>
-        <button className="text-white bg-gray-700 p-4 w-full font-medium rounded-lg flex align-middle gap-4">
+        <button onClick={loginFacebook} className="text-white bg-gray-700 p-4 w-full font-medium rounded-lg flex align-middle gap-4">
           <AiFillFacebook className="text-2xl text-blue-700" />
           Sign in with Facebook
         </button>
