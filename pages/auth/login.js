@@ -3,15 +3,18 @@ import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { AiFillFacebook } from 'react-icons/ai'
 import { FcGoogle } from "react-icons/fc";
 import { auth } from '../../utils/firebase'
+import { useRouter } from 'next/router';
 
 export default function Login() {
 
   // Sign in using google provider
   const googleProvider = new GoogleAuthProvider();
+  const router = useRouter()
   const LoginGoogle = async () => {
     try 
     {
       const result = await signInWithPopup(auth, googleProvider)
+      router.push('/dashboard')
       console.log(result)
     }
     catch(error){
