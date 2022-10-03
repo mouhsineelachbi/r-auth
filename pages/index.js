@@ -10,7 +10,8 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1>Hello</h1>
+        <h1 className='text-2xl mt-10'>Upgrade your web development knowledge with us today</h1>
+        <h3 className='text-xl'>Learn web and mobile latest technologies</h3>
       </main>
     </div>
   )
