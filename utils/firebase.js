@@ -1,11 +1,10 @@
-// Import the functions you need from the SDKs you need
-
 import {getAuth} from 'firebase/auth'
 import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
+console.log(process.env.API_KEY)
 const firebaseConfig = {
-  apiKey: process.env.API_KEY,
+  apiKey: `${process.env.API_KEY}`,
   authDomain: process.env.AUTH_DOMAIN,
   projectId: process.env.PROJECT_ID,
   storageBucket: process.env.STORAGE_BUCKET,
