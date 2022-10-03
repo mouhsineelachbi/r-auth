@@ -1,4 +1,4 @@
-import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { FacebookAuthProvider, GoogleAuthProvider, signInWithPopup, updateProfile } from "firebase/auth";
 
 import { AiFillFacebook } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
@@ -25,6 +25,10 @@ export default function Login() {
   const loginFacebook = async () => {
     try {
       const result = await signInWithPopup(auth, fbAuthProvider)
+      const credentials = await fbAuthProvider.credentialFromResult(result)
+      const token = credentials.accessToken;
+      let photoUrl = result.user.photoURL + '&height=500&access_token=' + token
+      await updateProfile(auth.currentUser, {photoUrl: photoUrl})
       console.log(result)
       router.push('/dashoard')
     } catch (error) {
